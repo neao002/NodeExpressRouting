@@ -1,0 +1,77 @@
+body {
+  background-color: rgb(238, 231, 232);
+}
+
+li {
+  color: black;
+  background-color: rgb(237, 215, 215);
+  font-size: 40px;
+}
+
+nav {
+  height: 50px;
+  width: 100%;
+  background-color: lightblue;
+  margin-bottom: 10px;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+}
+.projects {
+  margin-left: 30%;
+  color: blueviolet;
+}
+
+.imagehome {
+  width: 80%;
+  height: 80vh;
+  margin-left: 10%;
+}
+
+.imageprofile {
+  width: 50vh;
+  height: 80vh;
+  margin-left: 30%;
+  margin-top: 10%;
+}
+
+div .backgroundaboutme {
+  color: rgb(28, 23, 17);
+}
+
+.containerprofile {
+  font-size: 2rem;
+}
+
+.picturenico {
+  width: 30vh;
+  height: 40vh;
+  margin-left: 10%;
+  margin-top: 10%;
+  border-radius: 50%;
+}
+
+.aboutme {
+  font-size: 2rem;
+}
+
+.bepatience {
+  width: 90%;
+  height: 80vh;
+  margin-left: 5%;
+}
+
+.crazyimage {
+  width: 80%;
+  margin-left: 10%;
+}
