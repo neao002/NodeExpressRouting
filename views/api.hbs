@@ -1,0 +1,43 @@
+  <h1>Check the Following information</h1>
+
+
+
+
+    {{!-- <ul>
+      <li><a href="/user/1">Client number 1</a></li>
+      <li><a href="/user/2">Client number 2</a></li>
+      <li><a href="/user/3">Client number 3</a></li>
+      <li><a href="/user/4">Client number 4</a></li>
+    </ul> --}}
+
+
+
+    <table>
+
+      {{#if users}}
+  <tr>
+   
+    <th>Email </th>
+    <th>Name </th>
+    <th>Street</th>
+    <th>City</th>
+    <th>Company</th>
+  </tr>
+  <tr>
+     {{#each  users}}
+    <td>{{email}}</td>
+    <td>{{name}}</td>
+    <td>{{address.street}}</td>
+    <td>{{address.city}}</td>
+     <td>{{company.name}}</td>
+  </tr>
+ 
+  {{/each}}
+</table>
+
+{{else}}
+
+<h2>No Data Coming out </h2>
+
+{{/if}}
+
