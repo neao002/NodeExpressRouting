@@ -2,64 +2,43 @@ const express = require("express");
 
 const app = express();
 
-const axios = require("axios");
+//body parser
+
+const bodyParser = require("body-parser");
+// my port store number
 
 const port = 8080;
 
+// routers
+
+const userRouter = require("./routes/users");
+const indexRouter = require("./routes/indexRouter");
+
+// build a middle ware
+
+app.use(express.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// using express statics folders
+
 app.use(express.static(__dirname + "/"));
 
+// handlebars
+
 app.set("view engine", "hbs");
+
+// routing from my routes folder
+
+app.use("/", indexRouter);
+
+app.use("/", userRouter);
+
+// application middleware
+
+app.use((res, req, next) => {});
 
 app.listen(port),
   () => {
     console.log("on port 3000");
   };
-
-app.get("/", (req, res) => {
-  res.render("home", {
-    pageTittle: "Welcome to my Website",
-    foods: ["apple", "orange", "pineapple"],
-    users: [
-      {
-        id: 1,
-        name: "nico",
-      },
-      {
-        id: 2,
-        name: "murat",
-      },
-      {
-        id: 3,
-        name: "rodrigo",
-      },
-    ],
-  });
-});
-
-app.get("/profile", (req, res) => {
-  res.render("profile");
-});
-
-app.get("/aboutme", (req, res) => {
-  res.render("aboutme");
-});
-
-app.get("/checkout", (req, res) => {
-  res.render("checkout");
-});
-
-app.get("/api", (req, res) => {
-  const apiLink = "https://jsonplaceholder.typicode.com/users/";
-
-  axios.get(apiLink).then((result) => {
-    //test data in browser
-    // res.json(result.data);
-    res.render("api", {
-      users: result.data,
-    });
-  });
-});
-
-app.get("*", (req, res) => {
-  res.render("404");
-});
