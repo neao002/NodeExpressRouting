@@ -51,10 +51,17 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+//import my model User
+
+const User = require("../Models/User");
+
 router.post("/login", (req, res) => {
   console.log("Data is received from user:", req.body);
+  const newUser = new User(req.body);
+  console.log(newUser);
+  newUser.save();
   //res.end(JSON.stringify(req.body));
-  res.render("login", {
+  res.render("loginInfo", {
     tittle1: "Your information is now stored, thank you",
   });
 });
@@ -69,6 +76,46 @@ router.post("/resetPassword", (req, res) => {
   console.log("Data is received from user:", req.body);
   // res.end(JSON.stringify(req.body));
 });
+
+// todoList
+
+const Todo = require("../Models/toDolist");
+
+router.get("/todoList", (req, res) => {
+  console.log("getting todo list", req.body);
+  res.render("todoList");
+});
+
+router.post("/todoList", (req, res) => {
+  const newTodo = new Todo(req.body);
+  console.log(newTodo);
+  newTodo.save().then((data) => {
+    res.render("todoList", {
+      tittle: "Todo List",
+      secondTittle: "Task Added, and stored- Add another one",
+      todo: data,
+    });
+  });
+});
+
+// router.get("/todoList", (req, res) => {
+//   Todo.find({}, (err, tasks) => {
+//     res.render("todoList", { todoTasks: tasks });
+//   });
+//   res.render("todoList");
+// });
+
+// router.post("todoList", async (req, res) => {
+//   const todoTask = new TodoTask({
+//     content: req.body.content,
+//   });
+//   try {
+//     await todoTask.save();
+//     res.redirect("/todoList");
+//   } catch (err) {
+//     res.redirect("/todoList");
+//   }
+// });
 
 // api
 

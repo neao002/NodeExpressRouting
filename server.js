@@ -7,6 +7,16 @@ const app = express();
 const bodyParser = require("body-parser");
 // my port store number
 
+//adding moongose
+const mongoose = require("mongoose");
+const DBname = "fbw41";
+const DataBaseLink = `mongodb+srv://user:Nicolas19891.@cluster0.mpkuw.mongodb.net/${DBname}`;
+
+mongoose
+  .connect(DataBaseLink)
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(() => console.log("Database connection is failed"));
+
 const port = 8080;
 
 // routers
@@ -18,7 +28,7 @@ const indexRouter = require("./routes/indexRouter");
 
 app.use(express.json());
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // using express statics folders
 

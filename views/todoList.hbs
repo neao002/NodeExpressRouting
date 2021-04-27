@@ -1,0 +1,46 @@
+<form action="/todoList" method="POST">
+<h1 className= "contactForm">{{tittle }}</h1>
+
+
+  <label for="add">Add your task</label><br>
+  <input type="add" id="add" name="add" ><br>
+
+  
+
+
+ <h2>{{secondTittle}}</h2>
+
+
+<table>
+
+  
+
+  
+ 
+ {{#each todo}}
+       <tr>
+          
+        
+  
+     
+
+
+
+
+
+    
+    
+   {{/each}}
+  </tr>
+
+
+
+
+</table>
+
+  
+
+
+
+<input type="submit" value="Submit">
+</form> 
